@@ -43,7 +43,7 @@ const Home = () => {
                 <div className='w-[85%] max-w-[450px] h-[270px] flex flex-col items-center justify-start gap-3 backdrop-blur-sm bg-white/30 mt-4 rounded-[25px]'>
                     <div className='w-[90%] flex items-center justify-center'>
                         <div className='w-[100px] h-[100px] flex items-center justify-center overflow-hidden'>
-                            <img src={currenWeather?.current?.condition?.icon} alt="/" className='h-[180px] object-cover' />
+                            <img src={currenWeather?.current?.condition?.icon} alt="/" className='h-[100%] object-cover' />
                         </div>
                         <p className='text-[20px] md:text-[25px]'><b>{currenWeather?.current?.condition?.text}</b></p>
                     </div>
@@ -82,7 +82,7 @@ const Home = () => {
                     currenWeather?.current?.is_day === 0 ?
                         <img src={Night} alt="night" className='w-[100%] h-[100%] object-cover' />
                         :
-                        <img src={Day} alt="day" />
+                        <img src={Day} alt="day" className='w-[100%] h-[100%] object-cover' />
                 }
             </div>
         </>
