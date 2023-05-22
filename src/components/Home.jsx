@@ -41,7 +41,7 @@ const Home = () => {
         }).then((response) => {
             setCurrentWeather(response.data)
         })
-    }, [coords])
+    }, [coords, lat, long])
 
 
     useEffect(() => {
