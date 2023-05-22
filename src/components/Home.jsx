@@ -19,9 +19,7 @@ const Home = () => {
     const [dayly, setDayly] = useState([])
     const [inputValue, setValue] = useState('')
 
-    const handleValue = (event) => {
-        setValue(event.target.inputValue)
-    }
+    
 
     const coords = `${lat},${long}`
 
@@ -59,15 +57,11 @@ const Home = () => {
         })
     }, [coords])
 
+    const searchURL = `https://api.weatherapi.com/v1/forecast.json?key=4772d98d81e24ada927213745232205&q=${inputValue}&days=3&aqi=no&alerts=no`
+
     const Search = (e) => {
         if (e.key === 'Enter') {
-            axios.get('https://weatherapi-com.p.rapidapi.com/current.json', {
-                params: { q: `${inputValue}` },
-                headers: {
-                    'X-RapidAPI-Key': '675c9df9aamshd8a3990661c4a6bp1d53c2jsnfb676da3a728',
-                    'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-                }
-            }).then((response) => {
+            axios.get(searchURL).then((response) => {
                 setCurrentWeather(response.data)
             })
             setValue('')
@@ -85,7 +79,7 @@ const Home = () => {
 
             {coords === 'null,null' || currenWeather?.location?.name === 'Null' ?
                 <div className='absolute w-[100vw] h-[100vh] flex flex-col items-center justify-start z-20'>
-                    <input type="text" placeholder='serach...' value={inputValue} onKeyPress={Search} onChange={handleValue} className='w-[80%] max-w-[550px] h-[35px] border-solid border-[2px] border-blue-700 rounded-[20px] mt-4 text-center' />
+                    <input type="text" placeholder='serach...' value={inputValue} onChange={(event) => setValue(event.target.value)} onKeyPress={Search} className='w-[80%] max-w-[550px] h-[35px] border-solid border-[2px] border-blue-700 rounded-[20px] mt-4 text-center' />
                     <h2 className={`text-white text-[25px] md:text-[28px] mt-3 text-center`}><b>- -</b></h2>
                     <div className='flex items-center justify-center cursor-pointer'>
                         <TbCurrentLocation onClick={refresh} size={25} color='white' />
@@ -100,7 +94,7 @@ const Home = () => {
                 </div>
                 :
                 <div className='absolute w-[100vw] h-[100vh] flex flex-col items-center justify-start z-20 overflow-auto'>
-                    <input type="text" placeholder='serach...' value={inputValue} onKeyPress={Search} onChange={handleValue} className='w-[80%] max-w-[550px] h-[35px] border-solid border-[2px] border-blue-700 rounded-[20px] mt-4 text-center' />
+                    <input type="text" placeholder='serach...' value={inputValue} onChange={(event) => setValue(event.target.value)} onKeyPress={Search} className='w-[80%] max-w-[550px] h-[35px] border-solid border-[2px] border-blue-700 rounded-[20px] mt-4 text-center' />
                     <h2 className={`text-white text-[25px] md:text-[28px] mt-3 text-center`}><b>{currenWeather?.location?.country} - {currenWeather?.location?.name}</b></h2>
                     <div className='flex items-center justify-center cursor-pointer'>
                         <TbCurrentLocation onClick={refresh} size={25} color='white' />
