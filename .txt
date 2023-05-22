@@ -1,0 +1,4 @@
+<div className='flex items-center justify-center gap-1 text-white md:text-[18px]'>
+                                            <BsCloudRainHeavyFill size={25} color='white'/>
+                                            <p><b>{elem.day?.daily_chance_of_rain}</b>%</p>
+                                        </div>
