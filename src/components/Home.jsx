@@ -149,7 +149,9 @@ const Home = () => {
                             <p><b>{currenWeather?.current?.last_updated}</b></p>
                         </div>
                     </div>
+                    
                     <div className='w-[100%] h-[100%] min-h-[300px] flex flex-col items-center justify-center gap-3 p-2 overflow-auto'>
+                    <p className='text-[16px] md:text-[19px] text-white'><b>forecast</b></p>
                         {
                             dayly?.forecast?.forecastday?.map((elem) => (
                                 <div className='w-[90%] max-w-[400px] flex items-center justify-start p-2 rounded-[25px] bg-gradient-to-r from-cyan-500 to-blue-500'>
