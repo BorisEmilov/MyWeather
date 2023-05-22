@@ -74,13 +74,7 @@ const Home = () => {
         }
     }
 
-    useEffect(() => {
-        if (currenWeather?.location?.name === 'Null') {
-            window.location.reload()
-        } else {
-            null
-        }
-    }, [coords])
+    
 
     const refresh = () => window.location.reload(true)
 

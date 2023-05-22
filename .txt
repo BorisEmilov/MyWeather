@@ -2,3 +2,12 @@
                                             <BsCloudRainHeavyFill size={25} color='white'/>
                                             <p><b>{elem.day?.daily_chance_of_rain}</b>%</p>
                                         </div>
+
+
+useEffect(() => {
+        if (currenWeather?.location?.name === 'Null') {
+            window.location.reload()
+        } else {
+            null
+        }
+    }, [coords])
